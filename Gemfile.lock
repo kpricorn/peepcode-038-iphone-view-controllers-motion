@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:sdecastelberg/birom.git
+  revision: 91670fb2f15b7f2954726ac110b8efde1f36cf90
+  branch: test
+  specs:
+    birom (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -12,6 +19,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  birom!
   bubble-wrap
   geomotion
   rubymotion_generators

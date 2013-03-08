@@ -1,13 +1,14 @@
+DidClickOnItem = 'DidClickOnItem:'
+
 class ThumbnailsView < UIView
 
   THUMBNAIL_VIEW_COLUMN_COUNT = 2.0
   include BW::KVO
 
-  def initWithFrame(frame, delegate:aDelegate)
+  def initWithFrame frame
     super
     @content = []
     @buttons = []
-    #delegate = aDelegate;
     frameAtOrigin = CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)
     @scrollView = UIScrollView.alloc.initWithFrame(frameAtOrigin)
     @scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth
@@ -20,7 +21,7 @@ class ThumbnailsView < UIView
     self
   end
 
-  def updateContent(newContent)
+  def updateContent newContent
     if @content != newContent
       removeEventObservers
       @content = newContent
@@ -65,12 +66,7 @@ class ThumbnailsView < UIView
       button = UIButton.alloc.initWithFrame(buttonFrame)
       button.setBackgroundImage(dataItem.image, forState:UIControlStateNormal)
       button.when(UIControlEventTouchUpInside) do
-        p 'button clicked'
-        #if ([delegate respondsToSelector:@selector(didClickOnItem:)])
-        #{
-        #id <TFThumbnailViewDataItem> item = [content objectAtIndex:[sender tag]];
-        #[delegate didClickOnItem:item];
-        #}
+        App.notification_center.post(DidClickOnItem, dataItem)
       end
       button.tag = i
 
