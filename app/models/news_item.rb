@@ -34,7 +34,6 @@ class NewsItem
 
     Dispatch::Queue.concurrent.async do
       image_data = NSData.alloc.initWithContentsOfURL(@screenshotURL)
-      p image_data
       if image_data
         @image = UIImage.alloc.initWithData(image_data)
       end
