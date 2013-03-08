@@ -1,6 +1,6 @@
 class ThumbnailsView < UIView
 
-  THUMBNAIL_VIEW_COLUMN_COUNT = 2
+  THUMBNAIL_VIEW_COLUMN_COUNT = 2.0
   include BW::KVO
 
   def initWithFrame(frame, delegate:aDelegate)
