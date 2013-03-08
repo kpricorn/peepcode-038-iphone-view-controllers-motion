@@ -2,6 +2,7 @@ class ListViewController < UIViewController
 
   def init
     super
+    self.navigationItem.title = 'List'
     self.tabBarItem = UITabBarItem.alloc.initWithTitle('List',
                                                        image: '179-notepad'.uiimage,
                                                        tag: 1)

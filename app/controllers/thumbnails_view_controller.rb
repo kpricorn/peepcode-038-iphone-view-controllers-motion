@@ -1,24 +1,37 @@
 class ThumbnailsViewController < UIViewController
 
+  attr_accessor :newsItems
+
   def init
     super
+    self.navigationItem.title = 'Thumbnails'
     self.tabBarItem = UITabBarItem.alloc.initWithTitle('Thumbnails',
                                                        image: '45-movie-1'.uiimage,
                                                        tag: 1)
     self
   end
 
-  def viewDidLoad
-    super
-    # Do any additional setup after loading the view.
+  def loadView
+    self.view = ThumbnailsView.alloc.initWithFrame(UIScreen.mainScreen.applicationFrame,
+                                      delegate:self)
   end
 
-  def viewDidUnload
+  def viewDidAppear(animated)
+    loadData
     super
-    # Release any retained subviews of the main view.
   end
 
-  def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
-    interfaceOrientation == UIInterfaceOrientationPortrait
+  def loadData
+    if @newsItems.nil?
+      @newsItems = NewsItem.loadRecentWithDelegate(
+        &method(:receivedNewsItems))
+    else
+      receivedNewsItems(@newsItems)
+    end
+  end
+
+  def receivedNewsItems(receivedNewsItems)
+    @newsItems = receivedNewsItems
+    self.view.updateContent(@newsItems)
   end
 end
