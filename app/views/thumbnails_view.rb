@@ -6,6 +6,7 @@ class ThumbnailsView < UIView
   def initWithFrame(frame, delegate:aDelegate)
     super
     @content = []
+    @buttons = []
     #delegate = aDelegate;
     frameAtOrigin = CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)
     @scrollView = UIScrollView.alloc.initWithFrame(frameAtOrigin)
