@@ -48,9 +48,5 @@ class NewsItem
     end
 
     'default-43x43.png'.uiimage
-    #NSInvocationOperation *op = [[NSInvocationOperation alloc] initWithTarget:self 
-    #[op setQueuePriority:NSOperationQueuePriorityVeryLow];
-    #[[HROperationQueue sharedOperationQueue] addOperation:op];
-    #[op release];
   end
 end
