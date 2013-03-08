@@ -63,7 +63,6 @@ class ThumbnailsView < UIView
                                buttonWidth, buttonHeight)
 
       button = UIButton.alloc.initWithFrame(buttonFrame)
-      button.backgroundColor = UIColor.blueColor
       button.setBackgroundImage(dataItem.image, forState:UIControlStateNormal)
       button.when(UIControlEventTouchUpInside) do
         p 'button clicked'
