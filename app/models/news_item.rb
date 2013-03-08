@@ -19,7 +19,7 @@ class NewsItem
           n.text = item_json['snap']['text']
           n.url = item_json['snap']['url'].nsurl
           n.fromUser = item_json['snap']['from_user']
-          n.screenshotURL  = "http://api1.thumbalizr.com/?url=#{n.url}&width=300".nsurl
+          n.screenshotURL  = "http://api1.thumbalizr.com/?url=#{n.url.absoluteString}".nsurl
           n
         end
         block.call(news_items)
