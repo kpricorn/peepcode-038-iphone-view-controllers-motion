@@ -31,9 +31,10 @@ class ThumbnailsView < UIView
   end
 
   def addEventObservers
-    @content.each do |dataItem|
-      observe(dataItem, 'image') do |old_value, new_value|
-        p 'image changed', old_value, new_value
+    @content.each_with_index do |dataItem, index|
+      observe(dataItem, :image) do |old_value, new_value|
+        button = @buttons.at(index)
+        button.setBackgroundImage(new_value, forState:UIControlStateNormal)
       end
     end
   end
