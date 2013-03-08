@@ -35,7 +35,8 @@ class NewsItem
     Dispatch::Queue.concurrent.async do
       image_data = NSData.alloc.initWithContentsOfURL(@screenshotURL)
       if image_data
-        @image = UIImage.alloc.initWithData(image_data)
+        self.image = UIImage.alloc.initWithData(image_data).scale_to_fill([320, 480])
+        self.thumbnailImage = UIImage.alloc.initWithData(image_data).scale_to_fill([43, 43])
       end
     end
     'default-320x480.png'.uiimage
